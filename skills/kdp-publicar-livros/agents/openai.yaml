@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publicar livros no Kindle"
+  short_description: "Envia seus livros ao KDP com escolhas já salvas"
+  default_prompt: "Use $kdp-publicar-livros para cadastrar e enviar os livros indicados ao Kindle com minhas escolhas salvas, sem novas confirmações."
