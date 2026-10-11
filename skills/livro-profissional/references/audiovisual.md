@@ -1,5 +1,10 @@
 # Narração e vídeo ilustrado
 
+## Alternativa local MOSS-TTS para montagem no Filmora
+
+Para pedidos de narracao local, usar a skill complementar `narracao-livro`, instalada ao lado de `livro-profissional`. Israel aprovou uma referencia feminina brasileira e pediu entrega em MP3 separados e numerados, com blocos maiores para reduzir emendas. Ler a configuracao local dessa skill; nao publicar a referencia de audio nem caminhos pessoais no repositorio publico. Agrupar paragrafos ate aproximadamente 1000 caracteres, respeitar frases e preservar texto; entregar manifesto de ordem, texto, hashes e duracoes. Usar MP3 192 kbps e manter WAV intermediarios para retomada. Nao concatenar os blocos automaticamente: o autor fara as juncoes no Filmora. Manter cache da referencia e codec fora da GPU na geracao para melhorar desempenho, sem trocar a voz aprovada nem reduzir fidelidade. O perfil ElevenLabs abaixo continua valido quando esse servico for solicitado e para audios existentes.
+
+
 ## Voz, scripts e credenciais
 
 A preferência atual de Israel para novas produções é **ElevenLabs em português brasileiro, modelo Eleven v4 (`eleven_v4`), voz `rwMvgbQxwV0LJTium7sd` (Lucy Fennek — Immersive and Inviting)**, escolhida pelo usuário em 05/10/2026 em substituição ao padrão anterior, por script com cache e alinhamento de caracteres. [Voz indicada pelo autor](https://elevenlabs.io/voices/rwMvgbQxwV0LJTium7sd). Voz reafirmada junto ao modelo v4 pelo autor em 11/10/2026. Use essa combinação como padrão nas novas narrações, salvo escolha explícita diferente para o projeto. Não peça novamente a escolha da voz ou do modelo; avalie ritmo, pronúncias e interpretação na amostra de 60–90 segundos antes do lote. A consulta de metadados em 05/10/2026 confirmou esse ID e nome, com idioma de origem `de-DE`; isso não comprova a qualidade em pt-BR. Avalie especialmente sotaque e nomes brasileiros na amostra. Verifique a disponibilidade da voz e os modelos/parâmetros aceitos antes de uma nova chamada, sem trocar o ID silenciosamente.

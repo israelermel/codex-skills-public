@@ -1,0 +1,25 @@
+{
+  "model": "OpenMOSS-Team/MOSS-TTS-Local-Transformer",
+  "language_preference": "pt-BR",
+  "voice_preference": "feminina",
+  "reference_audio": null,
+  "require_reference": true,
+  "voice_status": "aguardando_referencia_local",
+  "output_format": "mp3",
+  "mp3_bitrate": "192k",
+  "delivery": "numbered_blocks",
+  "optimize": true,
+  "audio_temperature": 1.0,
+  "audio_top_p": 0.95,
+  "audio_top_k": 50,
+  "audio_repetition_penalty": 1.1,
+  "paragraph_pause_seconds": 0.65,
+  "sentence_pause_seconds": 0.2,
+  "max_new_tokens": 2048,
+  "rejected_previews": [
+    "voz_01",
+    "voz_02"
+  ],
+  "chunk_chars": 1000,
+  "seed": 42
+}
