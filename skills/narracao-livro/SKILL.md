@@ -22,3 +22,5 @@ Israel aprovou Qwen3-TTS 0.6B Base com Carla. Para novas narracoes usar scripts/
 Perfis em config.json permitem --voice carla ou --voice bruna. Configurar referencia/transcricao localmente e marcar approved apos avaliar amostra. Manter default_voice se nao houver escolha; nao substituir voz de projetos existentes. Referencias pessoais nao acompanham a distribuicao publica.
 
 Perfis adicionais: Bruna foi aprovada no computador de origem; Ana Alice (`ana-alice`) foi cadastrada para teste. Consultar status e referencias locais em config.json; nao presumir que os audios pessoais estao instalados em outra maquina.
+
+Carla, Bruna e Ana Alice foram aprovadas no computador de origem. Aceitar escolha pelo nome e usar --voice carla, --voice bruna ou --voice ana-alice. A distribuicao publica nao inclui referencias pessoais; configurar essas referencias em cada maquina. Carla permanece padrao.
