@@ -103,3 +103,14 @@ Leia [cadastro do eBook](references/cadastro-kdp.md). Prepare os textos efetivos
 - Inclua os fontes editáveis, os formatos solicitados, prompts/direção visual e de voz, manifesto com hashes e relatório dos checks realmente executados. Crie somente pastas necessárias à fase atual.
 - Atualize o registro global após cada aprovação, alteração importante ou conclusão. O estado final deve distinguir `gerado`, `validado`, `aprovado pelo autor` e `publicado`.
 - Não declare padrão profissional apenas porque o arquivo abriu: a qualidade editorial, a inspeção visual e a escuta precisam ter evidências. Se faltarem dados da gráfica, voz disponível ou ferramenta de validação, entregue as provas possíveis e nomeie precisamente a pendência.
+
+## Manutenção e sincronização desta skill
+
+Regra permanente de Israel: toda alteração nesta skill, incluindo referências, modelos, scripts e assets, deve ser publicada também em `https://github.com/israelermel/codex-skills-public`, branch `main`, pasta `skills/livro-profissional`, antes de declarar a atualização concluída. O pedido de editar a skill inclui autorização para esse commit e push; não pedir novamente confirmação para sincronizar.
+
+- Verificar os estados Git da origem e do repositório público; incluir somente mudanças desta skill em commits pequenos e focados, preservando alterações de outros trabalhos.
+- Sincronizar o pacote completo, incluindo remoções intencionais. Adaptar caminhos absolutos locais para referências portáteis; em `references/licoes-do-projeto.md`, manter os caminhos históricos sob `<pasta-do-livro>/` na cópia pública. Não publicar credenciais, manuscritos ou arquivos de projetos de livros.
+- Validar estrutura e links da skill; executar checks apropriados aos scripts alterados. Fazer commit e push da origem quando versionada e da cópia pública, e verificar o commit remoto.
+- Se o envio falhar, registrar a pendência e reportar a falha; não declarar o repositório público atualizado sem confirmação remota.
+
+Essa sincronização mantém a versão disponível no GitHub. A instalação no outro computador precisa ser atualizada a partir desse repositório; não presumir que ela se atualiza sozinha.

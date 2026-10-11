@@ -29,6 +29,12 @@ Use $livro-profissional para trabalhar no meu livro, preservando as decisões e 
 
 Para atualizar, peça ao Codex que compare a versão instalada com a deste repositório e aplique a atualização preservando eventuais personalizações locais.
 
+## Sincronização da versão mais recente
+
+Toda atualização da `livro-profissional` feita pelo Codex deve ser sincronizada com este repositório na branch `main`, incluindo todos os recursos da skill. Essa regra está no próprio `SKILL.md` e nas instruções de manutenção do repositório. A atualização só é concluída após commit, push e confirmação remota.
+
+O GitHub fica com a versão mais recente; a instalação do outro computador não se atualiza automaticamente. Para obter uma atualização, peça ao Codex que compare a skill instalada com este repositório e aplique as diferenças preservando suas personalizações.
+
 ## Conteúdo do repositório
 
 Somente os arquivos da skill e os recursos necessários são publicados aqui. Manuscritos, áudios, vídeos, credenciais e arquivos dos projetos de livros não acompanham o pacote. A capa de exemplo acompanha a skill como referência visual; não constitui permissão de reutilização como capa de outra obra.
