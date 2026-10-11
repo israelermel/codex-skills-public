@@ -8,8 +8,16 @@ p=argparse.ArgumentParser()
 p.add_argument('--files',nargs='+',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--dry-run',action='store_true')
+p.add_argument('--voice', help='Perfil de voz: carla ou bruna')
 a=p.parse_args()
 c=json.loads((Path(__file__).resolve().parents[1]/'config.json').read_text(encoding='utf-8'))
+voice=a.voice or c.get('default_voice','carla')
+profiles=c.get('voices',{})
+if voice not in profiles:
+    raise SystemExit('Perfil de voz nao configurado: '+voice)
+c.update(profiles[voice])
+if c.get('status')!='approved':
+    raise SystemExit('Voz ainda em teste; aguarde avaliacao antes do lote: '+voice)
 jobs=[(i,f,chunks(clean_md(f.read_text(encoding='utf-8-sig')),c['chunk_chars'])) for i,f in enumerate(a.files,1)]
 if a.dry_run:
     for i,f,parts in jobs: print(f,len(parts),'blocos')

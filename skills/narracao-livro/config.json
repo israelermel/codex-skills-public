@@ -24,5 +24,18 @@
     "voz_02"
   ],
   "chunk_chars": 1000,
-  "seed": 42
+  "seed": 42,
+  "default_voice": "carla",
+  "voices": {
+    "carla": {
+      "reference_audio": null,
+      "reference_transcript": null,
+      "status": "pending"
+    },
+    "bruna": {
+      "reference_audio": null,
+      "reference_transcript": null,
+      "status": "pending"
+    }
+  }
 }
