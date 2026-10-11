@@ -14,3 +14,7 @@ Use `--files CAP1.md CAP2.md --output PASTA` ou `--list LISTA.txt --output PASTA
 Entregue MP3 192 kbps separados e numerados em blocos/<capitulo>/, com manifesto de texto, duracao e hashes. Nao concatene: usuario monta as juncoes no Filmora. Preserve WAV internos e retome apenas trechos ausentes ou invalidos. Mudanca de agrupamento nao apaga audios anteriores. FFmpeg deve estar no PATH.
 
 O helper usa referencia codificada em cache e move o codec para CPU durante geracao, mantendo precisao e sampling. Nao reduza codebooks nem troque modelo/voz para acelerar sem avaliacao. Verifique audios e reporte medidas reais; nao alegue escuta, transcricao ou conformidade de plataforma sem verifica-las. Esta skill nao publica livros nem inicia geracoes sem pedido.
+
+## Perfil atual Qwen3-TTS
+
+Israel aprovou Qwen3-TTS 0.6B Base com Carla. Para novas narracoes usar scripts/narrar_qwen.py com runtime e referencia/transcricao configurados nesta maquina. Clonagem completa, CUDA BF16 SDPA, MP3 256 kbps em blocos, sem aceleracao posterior. Substitui o helper MOSS acima. Kokoro foi desinstalado; nao reinstalar automaticamente. Nao iniciar lotes sem pedido.
