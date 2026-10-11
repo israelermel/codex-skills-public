@@ -42,13 +42,22 @@ Cartela de capítulo, marcadores da descrição e legendas da fala são três en
 
 ## Operação do aplicativo
 
-Israel pediu uso do Filmora instalado no Mac. Abrir, montar/salvar e exportar no aplicativo, entregando `.wfp` editável. Utilizar as ferramentas de controle de app e a skill Computer Use disponíveis; inspecionar o estado antes de agir e após alterações. Se o controle não estiver disponível, dizer exatamente o que está pronto e qual passo requer ajuda, sem afirmar que operou o Filmora.
+Usar o **Filmora desktop no Mac ou no Windows**, conforme o computador disponível. Identificar o sistema operacional, a versão instalada e as ferramentas de controle acessíveis antes de começar; obter esses dados do ambiente quando possível, sem exigir uma escolha de plataforma já evidente. Abrir, montar/salvar e exportar no aplicativo, entregando `.wfp` editável. Utilizar as ferramentas de controle de app disponíveis nessa plataforma; inspecionar o estado antes de agir e após alterações. Se o controle não estiver disponível, preparar as mídias e o plano e dizer exatamente qual passo requer ajuda, sem afirmar que operou o Filmora ou substituir silenciosamente o aplicativo por outro editor.
 
 - Preferir elementos de acessibilidade e diálogos nativos. Não reutilizar índices de outra captura. Se ações no canvas/arraste não responderem, confirmar o resultado antes de repetir.
 - Após uma tentativa e uma alternativa sem efeito, solicitar a menor ajuda manual concreta: por exemplo, selecionar arquivos e clicar Abrir. Registrar o que foi importado; ao receber “importei”, conferir e continuar, sem reiniciar o projeto.
-- Em diálogos Abrir/Salvar do Mac, ir ao caminho completo com `⌘⇧G` pode evitar seleção frágil. Usar caminhos reais, sem escapes extras. Não salvar por cima do original ao testar uma montagem.
-- Alterar o texto aparente de um campo de exportação não comprova que o Filmora aceitou o destino. No caso de origem, a exportação foi para `~/Movies/Wondershare Filmora Mac/Output` apesar da alteração visível. Conferir o arquivo real após concluir e só então organizar a entrega.
+- No Mac, usar os diálogos nativos e, quando disponível, `⌘⇧G` para informar o caminho completo; salvar com `⌘S` ou o menu correspondente. No Windows, usar o campo de nome/caminho ou a barra de endereços do diálogo observado; salvar com `Ctrl+S` ou o menu correspondente. Conferir os atalhos configurados no aplicativo; não traduzir todos os atalhos do Mac para Windows por mera troca de teclas. [Atalhos do Filmora](https://filmora.wondershare.com/basic-video-editing/video-editing-keyboard-shortcuts.html).
+- Descobrir caminhos e runtimes locais. Nos scripts, usar construção de caminhos adequada ao sistema, como `pathlib.Path`; em comandos, respeitar o shell disponível, incluindo PowerShell no Windows. Usar caminhos reais, incluindo espaços e acentos, sem escapes de outra plataforma. Não salvar por cima do original ao testar uma montagem.
+- Alterar o texto aparente de um campo de exportação não comprova que o Filmora aceitou o destino. No caso histórico do Mac, a exportação foi para `~/Movies/Wondershare Filmora Mac/Output` apesar da alteração visível; esse caminho não é padrão universal nem deve ser imposto ao Windows. Conferir o destino efetivo e o arquivo real após concluir e só então organizar a entrega.
 - Scripts podem preparar mídias, cartelas, plano e cópias do projeto; não apresentar um MP4 produzido fora do app como exportação do Filmora. FFmpeg/ffprobe podem inspecionar os resultados e gerar provas técnicas sem substituir a edição solicitada.
+
+### Continuar em outro computador ou sistema
+
+Usar **Arquivo → Arquivar projeto / File → Archive Project** quando disponível para reunir projeto e mídias; copiar todo o pacote gerado, não apenas um `.wfp` que ainda dependa dos caminhos da máquina original. A extensão e a organização do arquivo de transferência podem variar pela versão. Consultar o fluxo da edição instalada: [Windows](https://filmora.wondershare.com/guide/move-projects.html) e [Mac](https://filmora.wondershare.com/guide-mac/move-projects.html).
+
+Antes de transferir entre Mac e Windows, conferir compatibilidade das versões e preferir a mesma versão nos dois computadores; não prometer compatibilidade apenas pela extensão. A orientação oficial de [transferência Windows → Mac](https://support.wondershare.com/how-tos/filmora/can-i-open-the-project-created-by-windows-version-on-mac.html) exige verificar a versão e arquivar o projeto. Não atualizar o aplicativo nem contratar licença ou recursos pagos sem autorização correspondente.
+
+No destino, abrir uma cópia pelo Filmora, relocalizar mídias ausentes e conferir fontes, cartelas, efeitos utilizados, áudio, duração e cortes. Salvar uma nova cópia e exportar um piloto para validar a retomada antes da edição integral. Preservar o projeto e os arquivos de origem. Registrar sistema/versão de origem e destino e o resultado da transferência; distinguir pacote preparado de projeto efetivamente aberto e validado no outro computador.
 
 ### Cópia nativa `.wfp` como recuperação de automação
 

@@ -6,7 +6,7 @@ Skills para instalar no Codex em outros computadores. Cada pasta em `skills/` é
 
 [Ver a skill](skills/livro-profissional/SKILL.md)
 
-Produção editorial em português brasileiro: transcrição e revisão, capas e ilustrações, EPUB/Kindle e impressão, audiobook, Filmora, legendas e textos para YouTube e cadastro no Amazon KDP. O pacote inclui referências, modelos, imagem de referência e gerador de legendas.
+Produção editorial em português brasileiro: transcrição e revisão, capas e ilustrações, EPUB/Kindle e impressão, audiobook, Filmora no Mac ou no Windows, legendas e textos para YouTube e cadastro no Amazon KDP. O pacote inclui referências, modelos, imagem de referência e gerador de legendas.
 
 A skill conserva as preferências editoriais de Israel, incluindo voz, composição visual e fluxo de aprovação. Instruções explícitas do projeto prevalecem. Ferramentas de imagem, ElevenLabs, Filmora e validadores de EPUB/PDF dependem da disponibilidade e das licenças no computador; instalar a skill não instala esses aplicativos nem configura credenciais.
 

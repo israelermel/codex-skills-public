@@ -20,6 +20,8 @@ Modelo: preencher conforme a etapa, remover instruções de modelo e não criar 
 - Narração: {{provedor_voice_id_modelo_idioma_settings_e_aprovacao}}; preferência atual para nova produção: ElevenLabs pt-BR, preservando escolhas aprovadas do projeto.
 - Áudio: {{blocos_hashes_duracoes_alinhamentos_progresso}}; não exigir faixa concatenada para editar.
 - Vídeo: {{projeto_filmora_mp4_timeline_resolucao_fps_codecs}}; padrão atual: imagens estáticas/cortes diretos; registrar exceções.
+- Ambiente Filmora: {{sistema_mac_ou_windows_versao_instalada_ferramentas_de_controle_e_destino_real_da_exportacao}}.
+- Transferência de projeto, quando solicitada: {{pacote_arquivado_midias_sistema_versao_de_origem_e_destino_abertura_e_piloto_validados_ou_pendencias}}; pacote preparado não comprova abertura no outro computador.
 - Capa do vídeo/miniatura: {{arquivo_conceito_fidelidade_ao_livro_legibilidade_e_aprovacao}}.
 - Cartelas: {{numero_titulo_livro_autor_estilo_duracao}}.
 - Legendas YouTube: {{srt_vtt_offsets_hash_do_video_validacao}}; arquivo externo com tempos, separado das cartelas.
