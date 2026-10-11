@@ -20,6 +20,8 @@ Use `entrega/youtube/` ou a pasta de publicação já existente no projeto:
 
 Para capítulos publicados individualmente, prepare título/descrição próprios por vídeo quando essa entrega for solicitada. Mantenha o título no padrão **frase | nome do autor**; identifique capítulo e livro na descrição e use somente links confirmados para a série ou vídeo completo, salvo escolha explícita diferente do autor.
 
+**Texto da frente de capa — regra de Israel, 11/10/2026:** a capa de PDF/EPUB e a miniatura do YouTube devem conter somente o título da obra, uma frase de impacto fiel à história e, embaixo, o nome do autor **Vorne Ermel**. Não colocar “Livro 1”, número de volume, gênero (“conto”, “romance”), chamadas de formato ou outros textos na frente. Para autoria diferente explicitamente confirmada, usar o nome confirmado, sem copiar Vorne Ermel. Na miniatura do YouTube, a frase deve ser exatamente a do `titulo.txt`; aplicar a mesma frase na frente vertical quando houver título de divulgação definido. Identificação de volume/subtítulo e outros dados editoriais permanecem na folha de rosto e nos metadados quando pertinentes. Ao corrigir uma capa, preservar a cena aprovada, conferir a grafia e a autoria no rodapé e atualizar/verificar sua incorporação efetiva no PDF e no EPUB; autoria apenas na folha de rosto não satisfaz esta regra.
+
 ## Capa ou miniatura do vídeo
 
 Aplicar [a referência de qualidade das capas](qualidade-capas.md), compartilhada com PDF e EPUB. Manter acabamento, personagens e identidade do livro em uma composição horizontal própria, conferida também em 320×180 e 160×90.
