@@ -1,0 +1,4 @@
+interface:
+  display_name: "Livro profissional"
+  short_description: "Do manuscrito ao Kindle, impresso e audiobook"
+  default_prompt: "Use $livro-profissional para produzir meu livro por etapas, começando pela revisão editorial e aguardando minha aprovação antes da capa."
