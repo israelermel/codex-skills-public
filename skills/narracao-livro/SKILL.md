@@ -20,3 +20,5 @@ O helper usa referencia codificada em cache e move o codec para CPU durante gera
 Israel aprovou Qwen3-TTS 0.6B Base com Carla. Para novas narracoes usar scripts/narrar_qwen.py com runtime e referencia/transcricao configurados nesta maquina. Clonagem completa, CUDA BF16 SDPA, MP3 256 kbps em blocos, sem aceleracao posterior. Substitui o helper MOSS acima. Kokoro foi desinstalado; nao reinstalar automaticamente. Nao iniciar lotes sem pedido.
 
 Perfis em config.json permitem --voice carla ou --voice bruna. Configurar referencia/transcricao localmente e marcar approved apos avaliar amostra. Manter default_voice se nao houver escolha; nao substituir voz de projetos existentes. Referencias pessoais nao acompanham a distribuicao publica.
+
+Perfis adicionais: Bruna foi aprovada no computador de origem; Ana Alice (`ana-alice`) foi cadastrada para teste. Consultar status e referencias locais em config.json; nao presumir que os audios pessoais estao instalados em outra maquina.
