@@ -75,3 +75,7 @@ Entregue a sequência operacional: acessar KDP → criar eBook Kindle → preenc
 Preparar o cadastro não autoriza publicação automática. Se o usuário pedir operação no site, execute o trabalho reversível autorizado, respeite decisões já aprovadas e pergunte apenas o que ainda for necessário. Após submissão, diferencie “em análise”, “publicando” e “disponível para compra”. Registre URL/ASIN somente quando existirem e tiverem sido verificados; depois atualize o link do livro nos textos do YouTube, se essa atualização estiver no escopo.
 
 Se também houver cadastro de edição física no KDP, reaproveite os textos editoriais consistentes e acrescente os campos próprios de impressão e ISBN válido conforme a modalidade. A escolha de impressão não altera a regra de entregar capa sem quadro de ISBN; a inserção cabe ao fornecedor.
+
+## Operação com a skill complementar
+
+Quando o pedido incluir upload/submissão real dos eBooks de Israel, ler [kdp-publicar-livros](../../kdp-publicar-livros/SKILL.md) e seu procedimento, se a skill estiver instalada. Reutilizar o pacote desta etapa, com arquivos/hashes e fatos da obra, e aplicar o perfil comercial e as dispensas de aprovação específicos da rotina de publicação. Não duplicar essas escolhas nesta referência nem tratar preparação de materiais como pedido de publicar. Para outro autor, as autorizações pessoais de Israel não se aplicam.

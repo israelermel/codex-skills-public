@@ -97,6 +97,8 @@ Para o título de divulgação dos livros de Vorne Ermel, use como padrão **fra
 
 Leia [cadastro do eBook](references/cadastro-kdp.md). Prepare os textos efetivos com base no livro aprovado, em formatos prontos para colar, e relacione todos os campos do cadastro: preenchidos, não aplicáveis ou dependentes de decisão do autor. Inclua título/subtítulo, autoria, descrição em texto e HTML, sete campos de palavras-chave quando pertinentes, categorias verificadas, dados da edição, direitos, acessibilidade, declaração de uso de IA e decisões comerciais. Não transforme o pedido desses materiais em submissão automática ao site.
 
+Para pedidos de **upload, submissão ou publicação real no Kindle**, usar a skill complementar [kdp-publicar-livros](../kdp-publicar-livros/SKILL.md), quando instalada, lendo seu procedimento antes de operar o site. Ela aplica o perfil comercial autorizado de Israel e verifica o estado de cada obra na Biblioteca KDP. Encaminhar a edição vigente e os registros já produzidos; não repetir a produção nem pedir novamente decisões ainda válidas. O pedido atual precisa incluir publicação dos livros indicados; preparar textos ou arquivos sozinho continua sem autorizar submissão. As dispensas específicas de aprovação da rotina KDP aplicam-se ao seu escopo, sem serem estendidas a outras etapas ou projetos. As duas skills podem ser instaladas juntas pelo repositório público; se a complementar estiver ausente, informar isso e preservar o trabalho preparado sem alegar que ela foi executada.
+
 ## Entrega e continuidade
 
 - Use nomes claros e mantenha somente a edição vigente em `entrega/`, preservando versões anteriores em `historico/`. Respeite a estrutura já estabelecida ao retomar um projeto.
