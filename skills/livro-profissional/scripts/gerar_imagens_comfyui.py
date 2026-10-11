@@ -65,6 +65,12 @@ def main():
         for node in workflow.values():
             if node['class_type'] not in info:
                 raise RuntimeError('Nó ausente: ' + node['class_type'])
+            schema = info[node['class_type']].get('input', {})
+            fields = schema.get('required', {}) | schema.get('optional', {})
+            for name, value in node['inputs'].items():
+                definition = fields.get(name)
+                if definition and isinstance(definition[0], list) and value not in definition[0]:
+                    raise RuntimeError(f"Opção ou arquivo indisponível: {node['class_type']}.{name} = {value}")
         key = 'capitulo_%03d_cena_%03d' % (scene['capitulo'], scene['cena'])
         fingerprint = hashlib.sha256(json.dumps(workflow, sort_keys=True).encode()).hexdigest()
         destination = args.saida / (key + '.png')
