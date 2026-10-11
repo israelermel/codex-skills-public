@@ -47,7 +47,7 @@ Pedidos restritos a tags, textos ou SRT de um vídeo existente não autorizam ge
 Não confundir:
 - Cartelas: número/título do capítulo, nome do livro e autor sobre a imagem.
 - Capítulos da descrição: navegação por horários.
-- SRT/VTT: **todo o texto falado**, incluindo abertura, personagens e narração, sincronizado.
+- SRT/VTT: **todo o texto efetivamente falado no vídeo**, incluindo identificação breve de abertura quando presente e a narrativa, sincronizado. A lista/apresentação de personagens permanece somente no livro e é excluída do roteiro audiovisual, conforme [a regra de abertura](audiovisual.md#abertura-sem-lista-de-personagens); depois de um corte, regenerar os tempos sem legendar a seção retirada.
 
 ### Sincronização sem nova geração de voz
 

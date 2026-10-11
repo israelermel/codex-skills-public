@@ -39,12 +39,20 @@ Prepare amostra de 60–90 segundos com uma pergunta, uma reflexão e uma conclu
 
 ## Roteiro e integridade
 
-- Derive `audiobook-text/` do `livro.md` aprovado. Use IDs estáveis por seção, sem fixar quantidade de capítulos; inclua abertura, introdução, capítulos, notas e encerramento conforme o conteúdo real.
+- Derive `audiobook-text/` do `livro.md` aprovado. Use IDs estáveis por seção, sem fixar quantidade de capítulos; inclua abertura, introdução, capítulos, notas e encerramento conforme o conteúdo real e o destino. Para o vídeo, exclua a lista/apresentação de personagens conforme a regra de abertura abaixo, preservando-a na fonte editorial.
 - Guarde direção de voz em campos separados do texto falado. A narração é uma interpretação do texto, não uma nova versão editorial. Não mude gênero gramatical, autobiografia ou pessoa narrativa do autor só porque a voz é feminina.
 - Expanda números, unidades e siglas quando ajudar a pronúncia; registre equivalências. Defina pronúncias de nomes com o autor se não forem claras. URLs, tabelas, notas e imagens precisam de adaptação audível explícita; não elimine conteúdo para encurtar o livro.
 - Créditos de abertura/encerramento devem corresponder aos dados reais. Diferencie autoria e voz sintética; não atribua a autoria à voz nem apresente síntese como interpretação humana contratada.
 - Registre hash do manuscrito e de cada roteiro. Se o manuscrito mudar, reconcilie os roteiros afetados antes de gerar áudio; anexar o hash novo a um roteiro velho não demonstra sincronização.
 - Divida em limites de parágrafo/frase e respeite limites atuais do serviço. Preserve continuidade nas fronteiras; não corte palavras.
+
+## Abertura sem lista de personagens
+
+Regra de Israel, 11/10/2026: a lista/apresentação de personagens serve para consulta do leitor e fica somente no livro (Markdown, PDF, EPUB e impresso). Exclua essa seção do roteiro de narração destinado ao vídeo e da montagem audiovisual; não a leia, transforme em cartela ou desloque para outro ponto do vídeo. A história deve começar após identificação breve da obra ou diretamente no primeiro capítulo, conforme a edição escolhida pelo autor. A intenção é reduzir a demora até a narrativa, sem prometer resultado de views ou retenção.
+
+Essa exclusão refere-se ao material de consulta, não às cenas, diálogos ou menções aos personagens no corpo da história. Registre a adaptação no roteiro audiovisual e mantenha o manuscrito intacto. Ao corrigir áudio já gerado, reaproveite as gravações válidas sem nova síntese; preserve a versão anterior e remova somente os intervalos autorizados. Se o autor já retirou a abertura inteira no editor, respeite esse início direto no capítulo em vez de recolocar créditos silenciosamente.
+
+Feche o espaço removido em todas as faixas de áudio, imagens e cartelas, fazendo a edição começar em `00:00`, sem preto ou silêncio de preenchimento. Recalcule duração, offsets, capítulos, SRT/VTT e vínculos/hashes pela timeline corrigida. Não reutilize as legendas ou os horários do vídeo anterior. Confira o primeiro quadro, a primeira fala e as junções; a integridade passa a ser medida contra o roteiro audiovisual aprovado, sem exigir a lista editorial no vídeo.
 
 ## Geração e conferência do audiobook
 

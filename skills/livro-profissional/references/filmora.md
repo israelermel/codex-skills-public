@@ -22,7 +22,7 @@ Usar os alinhamentos do áudio aprovado para localizar a fala associada a cada c
 
 No projeto de referência, cada bloco foi arredondado **para cima** ao quadro completo a 25 fps; a diferença vira apenas o silêncio final tecnicamente necessário. Usar o início efetivo de cada bloco na timeline para legendas e marcadores. A soma das durações MP3 originais pode divergir da duração renderizada; não usar essa soma para sincronizar o final do livro.
 
-Garantir ordem e continuidade das faixas: sem lacunas visuais, sobreposição acidental de falas, truncamento da última palavra ou repetição de trecho. Cobrir abertura/personagens com a capa ou arte aprovada e cobrir o último áudio até o fim. Nunca aplicar `-shortest` para esconder divergências.
+Garantir ordem e continuidade das faixas: sem lacunas visuais, sobreposição acidental de falas, truncamento da última palavra ou repetição de trecho. Cobrir a identificação breve de abertura, quando presente, com capa ou arte aprovada e cobrir o último áudio até o fim. A lista/apresentação de personagens fica somente no livro e não entra no vídeo, conforme [a regra de abertura](audiovisual.md#abertura-sem-lista-de-personagens). Ao retirar essa seção ou respeitar um início já escolhido pelo autor, fechar o intervalo em todas as faixas e começar em `00:00`; recalcular cartelas, legendas e capítulos pelos novos tempos. Nunca aplicar `-shortest` para esconder divergências.
 
 ## Aparência aprovada
 
