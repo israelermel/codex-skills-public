@@ -6,6 +6,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import uuid
 from pathlib import Path
 
 
@@ -20,9 +21,9 @@ def api(base, path, payload=None):
         raise RuntimeError(error.read().decode(errors='replace')) from error
 
 
-def graph(scene, style):
+def graph(scene, style, references=None):
     resolution = scene.get('resolucao', 768)
-    return {
+    workflow = {
         '1': {'class_type': 'UnetLoaderGGUF', 'inputs': {'unet_name': 'qwen-image-2.1-UC-Q6_K.gguf'}},
         '2': {'class_type': 'CLIPLoader', 'inputs': {'clip_name': 'qwen3vl_8b_int8_convrot.safetensors', 'type': 'qwen_image', 'device': 'cpu'}},
         '3': {'class_type': 'VAELoader', 'inputs': {'vae_name': 'qwen_image_2.1_vae_bf16.safetensors'}},
@@ -31,6 +32,40 @@ def graph(scene, style):
         '6': {'class_type': 'VAEDecode', 'inputs': {'samples': ['5', 0], 'vae': ['3', 0]}},
         '7': {'class_type': 'SaveImage', 'inputs': {'images': ['6', 0], 'filename_prefix': 'livros/capitulo_%03d_cena_%03d' % (scene['capitulo'], scene['cena'])}}
     }
+    if references:
+        workflow['4']['inputs']['vae'] = ['3', 0]
+        for i, reference in enumerate(references, 1):
+            node_id = str(7 + i)
+            workflow[node_id] = {'class_type': 'LoadImage', 'inputs': {'image': reference['nome_servidor']}}
+            workflow['4']['inputs'][f'images.image_{i}'] = [node_id, 0]
+        workflow['100'] = {'class_type': 'QwenImage21Cache', 'inputs': {'model': ['1', 0], 'device': 'cpu', 'dtype': 'default'}}
+        workflow['5']['inputs']['model'] = ['100', 0]
+    return workflow
+
+
+def prepare_references(base, paths, source_directory, validate_only=False):
+    references = []
+    if len(paths) > 16:
+        raise ValueError('O Qwen Image 2.1 aceita até 16 referências neste workflow.')
+    for path in paths:
+        source = Path(path)
+        if not source.is_absolute():
+            source = source_directory / source
+        pixels = source.read_bytes()
+        digest = hashlib.sha256(pixels).hexdigest()
+        extension = source.suffix.lower()
+        if extension not in ('.png', '.jpg', '.jpeg', '.webp'):
+            raise ValueError('Referência deve ser PNG, JPEG ou WebP: ' + str(source))
+        server_name = 'ref-' + digest + extension
+        if not validate_only:
+            boundary = 'ComfyBook' + uuid.uuid4().hex
+            body = (f'--{boundary}\r\nContent-Disposition: form-data; name="image"; filename="{server_name}"\r\nContent-Type: application/octet-stream\r\n\r\n').encode() + pixels + f'\r\n--{boundary}--\r\n'.encode()
+            request = urllib.request.Request(base + '/upload/image', data=body, headers={'Content-Type': 'multipart/form-data; boundary=' + boundary})
+            with urllib.request.urlopen(request, timeout=120) as response:
+                uploaded = json.load(response)
+            server_name = '/'.join(filter(None, [uploaded.get('subfolder'), uploaded['name']]))
+        references.append({'arquivo': str(source.resolve()), 'sha256': digest, 'nome_servidor': server_name})
+    return references
 
 
 def save_manifest(path, manifest):
@@ -62,7 +97,10 @@ def main():
         if scene['capitulo'] < 1 or scene['cena'] < 1:
             parser.error('Capítulo e cena devem ser positivos.')
         scene.setdefault('seed', int(hashlib.sha256(json.dumps(scene, sort_keys=True).encode()).hexdigest()[:12], 16))
-        workflow = graph(scene, book.get('estilo', ''))
+        references = prepare_references(args.url, scene.get('referencias', book.get('referencias', [])), args.cenas.parent, args.validar)
+        workflow = graph(scene, book.get('estilo', ''), references)
+        if references:
+            info = api(args.url, '/object_info')
         for node in workflow.values():
             if node['class_type'] not in info:
                 raise RuntimeError('Nó ausente: ' + node['class_type'])
@@ -70,6 +108,8 @@ def main():
             fields = schema.get('required', {}) | schema.get('optional', {})
             for name, value in node['inputs'].items():
                 definition = fields.get(name)
+                if args.validar and node['class_type'] == 'LoadImage' and name == 'image':
+                    continue
                 if definition and isinstance(definition[0], list) and value not in definition[0]:
                     raise RuntimeError(f"Opção ou arquivo indisponível: {node['class_type']}.{name} = {value}")
         key = 'capitulo_%03d_cena_%03d' % (scene['capitulo'], scene['cena'])
@@ -117,7 +157,7 @@ def main():
         if not pixels.startswith(b'\x89PNG\r\n\x1a\n'):
             raise RuntimeError('Resposta não é PNG.')
         destination.write_bytes(pixels)
-        manifest[key] = {'arquivo': destination.name, 'estado': 'gerado; aguardando inspeção e aprovação', 'cena': scene, 'workflow_sha256': fingerprint, 'imagem_sha256': hashlib.sha256(pixels).hexdigest(), 'prompt_id': prompt_id, 'segundos': round(time.monotonic() - start, 1), 'modelo': 'abenzerps/Qwen-Image-2.1-Uncensored-GGUF Q6_K', 'licenca': 'Qwen Research; autorização comercial separada necessária'}
+        manifest[key] = {'arquivo': destination.name, 'estado': 'gerado; aguardando inspeção e aprovação', 'cena': scene, 'referencias': references, 'workflow_sha256': fingerprint, 'imagem_sha256': hashlib.sha256(pixels).hexdigest(), 'prompt_id': prompt_id, 'segundos': round(time.monotonic() - start, 1), 'modelo': 'abenzerps/Qwen-Image-2.1-Uncensored-GGUF Q6_K', 'licenca': 'Qwen Research; autorização comercial separada necessária'}
         save_manifest(manifest_path, manifest)
         print('Gerado', destination, manifest[key]['segundos'], 's', flush=True)
     if not args.validar:

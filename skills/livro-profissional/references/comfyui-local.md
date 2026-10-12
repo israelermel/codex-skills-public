@@ -14,11 +14,25 @@ Validado em 11/10/2026: ComfyUI 0.39.0, PyTorch 2.14.1+cu130 e loader GGUF leeje
 
 Ler os capítulos inteiros, escolher momentos distintos e registrar a ligação com o texto. A quantidade local é variável e pode superar a antiga faixa de duas ou três cenas. Não criar cenas repetidas para preencher a contagem. Manter aprovação do piloto e do conjunto, salvo dispensa específica do autor. A preparação técnica não autoriza montar imagens inéditas em um livro aprovado.
 
-O JSON tem `livro`, `estilo` e `cenas`. Cada cena tem `capitulo`, `cena` (inteiros positivos), `trecho`, `prompt`, `seed`, `resolucao` (quadrada), `passos` e opcionais `cfg`, `negativo`. Descrever explicitamente a identidade dos personagens, roupas, ambiente e época. Este script inicial gera texto para imagem, sem referências visuais conectadas; identidade facial entre cenas precisa de inspeção, não é garantida por seed.
+O JSON tem `livro`, `estilo` e `cenas`. Cada cena tem `capitulo`, `cena` (inteiros positivos), `trecho`, `prompt`, `seed`, `resolucao`, `passos` e opcionais `cfg`, `negativo`. Descrever explicitamente a identidade dos personagens, roupas, ambiente e época. Sem referências, a imagem é quadrada; com referências, a proporção vem da primeira imagem e `resolucao` controla sua área aproximada. Identidade facial precisa de inspeção, não é garantida por seed.
 
 ```json
 {"livro":"exemplo","estilo":"Cinematic photorealism, natural materials, no text.","cenas":[{"capitulo":1,"cena":1,"trecho":"Trecho que motiva a cena","prompt":"Scene description with characters and setting","seed":123456,"resolucao":768,"passos":30}]}
 ```
+
+## Referências de personagens
+
+Preferência de Israel em 11/10/2026: preparar poucas imagens principais (capa e personagens/características) e reutilizá-las no ComfyUI para várias cenas por capítulo. Aproveitar capa e artes já aprovadas; preparar fichas frontais com rosto, cabelo, idade visual, compleição e roupas reconhecíveis. Distinguir detalhes confirmados no manuscrito de decisões de direção visual. Se houver envelhecimento, criar referências próprias por fase, sem envelhecer todos os capítulos automaticamente.
+
+Usar `referencias` no nível do livro como padrão ou em cada cena como substituição: lista de caminhos absolutos ou relativos à pasta do JSON, em PNG/JPEG/WebP. Uma lista vazia por cena desliga o condicionamento. O script envia essas imagens à API local, cria nós LoadImage e liga `images.image_1` etc. ao TextEncodeQwenImage21 com VAE. Registrar o papel de cada imagem no prompt: identidade, roupa, ambiente ou estilo. Usar a saída latent desse nó, que corresponde à primeira referência; não substituir por um latent de outro tamanho. A primeira referência também define a proporção, portanto escolher seu formato conforme o destino.
+
+O workflow usa QwenImage21Cache no CPU com precisão padrão, para reduzir pressão na RTX de 8 GB sem quantizar o cache adicionalmente. Começar com `resolucao: 640` e 24 passos em um piloto; medir antes de ampliar. Seeds diferentes ajudam a testar se a identidade vem da referência e não de cenas quase repetidas. Não misturar a capa automaticamente ao condicionamento de todas as cenas: letras, personagens de outra fase e acontecimentos futuros podem ser copiados. No capítulo 1 do piloto A Casa Onde Guardamos o Amanhã, por exemplo, a casa na árvore da capa ainda não existe.
+
+```json
+{"livro":"exemplo","referencias":["referencias/personagens.png"],"estilo":"Image 1 defines the identities of Miguel and Clara; preserve faces and clothes, create one new cinematic frame.","cenas":[{"capitulo":1,"cena":1,"trecho":"Trecho narrativo","prompt":"New action and setting","seed":510111,"resolucao":640,"passos":24}]}
+```
+
+Uploads usam nomes derivados do hash do conteúdo. O manifesto registra arquivos/hash das referências; alterar uma referência muda o workflow e impede sobrescrita silenciosa. `--validar` lê e confere referências locais e nós, mas não faz upload nem carrega os modelos. Em testes no Ryzen 5700X, FP32 foi mais rápido em uma multiplicação isolada, porém as primeiras gerações completas por referência em FP16 e FP32 ficaram próximas de 204 segundos; não prometer ganho de produção com base só no microbenchmark. O perfil FP16 anterior permanece válido; `--fp32-text-enc` é uma alternativa testada, com mais RAM necessária para cálculo.
 
 Executar `python scripts/gerar_imagens_comfyui.py roteiro.json --saida <pasta-de-imagens> --validar` para conferir disponibilidade dos nós e salvar workflows API sem gerar. Esse check não testa carga dos modelos. Remover `--validar` para gerar um piloto real. Medir tempo, conferir memória e inspecionar PNG antes do lote. Se houver falha, corrigir a causa e preservar cenas concluídas; não trocar modelo ou baixar outra quantização silenciosamente.
 
