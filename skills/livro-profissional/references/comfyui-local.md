@@ -1,4 +1,4 @@
-# Imagens de capítulos no ComfyUI
+# Capas e imagens de capítulos no ComfyUI
 
 Escolha de Israel em 11/10/2026: integrar a geração local com o arquivo existente `qwen-image-2.1-UC-Q6_K.gguf`, do repositório `abenzerps/Qwen-Image-2.1-Uncensored-GGUF`. Usar o script [gerar_imagens_comfyui.py](../scripts/gerar_imagens_comfyui.py). Não regenerar livros ou artes anteriores automaticamente.
 
@@ -9,6 +9,18 @@ Descobrir a pasta do ComfyUI e o endpoint local; usar ambiente Python isolado. I
 No Windows de Israel: RTX 4060 com 8 GB e aproximadamente 64 GB de RAM. Perfil inicial: encoder no CPU, `--lowvram --disable-dynamic-vram --reserve-vram 1 --preview-method none`, escutando somente em `127.0.0.1:8188`. Não executar narração e geração de imagens simultaneamente na mesma GPU. Conferir a instalação local antes de usar esse caminho em outro computador; a cópia pública da skill não instala pesos ou dependências.
 
 Validado em 11/10/2026: ComfyUI 0.39.0, PyTorch 2.14.1+cu130 e loader GGUF leejet; imagem real de ambiente/objetos em 512 × 512 com 20 passos em 132,3 s, e padrão 768 × 768 com 30 passos em 198,3 s, sem erro de memória. PNGs inspecionados e retomada real sem duplicação. Tempos incluem etapas de carregamento/encoding/decodificação, variam com a cena e não validam consistência facial. Os hashes completos de UC Q6_K, encoder e VAE coincidiram com os publicados.
+
+## Capas locais
+
+Escolha de Israel em 11/10/2026: a IA local é o padrão também para novas capas e estudos de renovação. Usar o mesmo ComfyUI/Qwen existente, sem chamar a geração de imagens do ChatGPT salvo pedido específico. Não substituir automaticamente capas aprovadas ou regenerar derivados publicados.
+
+Antes de gerar, procurar no diretório do livro `capa-briefing.md`, registros de produção/aprovação, referências visuais, contracapa e `titulo.txt` vigente. Conferir o conceito no manuscrito: idade dos personagens, arquitetura, objetos e clima narrativo. Orientações antigas de pintura ou autoria ausente cedem ao pedido atual de realismo e aos dados mais recentes confirmados. Seguir [qualidade-capas.md](qualidade-capas.md) para cena forte, luz cinematográfica, contraste e leitura em miniatura. Na frente, usar somente título, frase de impacto vigente e autoria confirmada.
+
+Reutilizar o script existente com uma cena identificada por `capitulo: 1` e `cena: 1`, em pasta exclusiva da capa; esses IDs são técnicos e não ligam a capa a um único capítulo. A primeira referência define a proporção: escolher uma referência vertical para a frente e horizontal para YouTube. Inspecionar a referência e declarar seu papel no prompt; a capa anterior pode orientar conceito e formato sem obrigar copiar estilo ou detalhes incompatíveis com o texto. Não esticar nem recortar indiscriminadamente para obter outro destino. Sem referência, este script produz imagem quadrada.
+
+Perfil de partida testado na RTX 4060 de 8 GB: `resolucao: 896`, 30 passos, CFG 4, Euler/simple. Ajustar conforme memória, qualidade e formato; não é resolução universal de publicação. O teste realista de A Casa Onde Guardamos o Amanhã gerou uma frente nativa de 736 × 1088 em 336,6 segundos (5 min 37 s), usando uma referência vertical. Madeira, vegetação e luz ficaram convincentes, e o modelo acertou título, frase, autoria e acentos. Ainda elevou demais a plataforma da casa e estreitou a escada: qualidade fotográfica não garante fidelidade espacial.
+
+Para testar a capacidade de letras do modelo, pode-se gerar a frente completa, fornecendo os textos exatos e conferindo palavra por palavra. Para o acabamento editorial, preferir arte sem letras e tipografia aplicada separadamente e editável; isso continua usando IA local para a arte. Inspecionar a frente inteira, detalhes e miniatura de 160–200 px, conferindo contraste, margens, anatomia, perspectiva e texto. Salvar original, prompt, workflow, tempo e hashes; distinguir dimensões nativas de ampliação. Interpolação não cria detalhe de impressão. Registrar o estudo como aguardando autor; incorporar em PDF/EPUB ou substituir a capa somente no escopo autorizado.
 
 ## Roteiro e lote
 
