@@ -17,7 +17,7 @@ Modelo: preencher conforme a etapa, remover instruções de modelo e não criar 
 - Direção visual: {{briefing_visual}}; imagens do vídeo com fotorrealismo e alta fidelidade de personagens/ambientes, preservando identidade e narrativa.
 - Roteiro visual: {{caminho_do_roteiro_por_cena}}; duas ou três imagens por capítulo conforme a narrativa; registrar cenas e motivos da escolha.
 - Cobertura visual: {{cenas_planejadas_geradas_aprovadas_pendentes}}; piloto aprovado confirma estilo, não quantidade.
-- Narração: {{provedor_voice_id_modelo_idioma_settings_e_aprovacao}}; preferência atual para nova produção: ElevenLabs pt-BR, preservando escolhas aprovadas do projeto.
+- Narração: {{provedor_voice_id_modelo_idioma_settings_e_aprovacao}}; padrão ElevenLabs para novas produções: pt-BR, Bruna Costa — Smooth, Velvety (`AKXBn24T1f9tvTDnWzWT`), `eleven_v4`, velocidade `0.9`, sem aceleração posterior; preservar escolhas aprovadas do projeto.
 - Áudio: {{blocos_hashes_duracoes_alinhamentos_progresso}}; não exigir faixa concatenada para editar.
 - Vídeo: {{projeto_filmora_mp4_timeline_resolucao_fps_codecs}}; padrão atual: imagens estáticas/cortes diretos; registrar exceções.
 - Ambiente Filmora: {{sistema_mac_ou_windows_versao_instalada_ferramentas_de_controle_e_destino_real_da_exportacao}}.
