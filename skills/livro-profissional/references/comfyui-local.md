@@ -8,6 +8,8 @@ Descobrir a pasta do ComfyUI e o endpoint local; usar ambiente Python isolado. I
 
 No Windows de Israel: RTX 4060 com 8 GB e aproximadamente 64 GB de RAM. Perfil inicial: encoder no CPU, `--lowvram --disable-dynamic-vram --reserve-vram 1 --preview-method none`, escutando somente em `127.0.0.1:8188`. Não executar narração e geração de imagens simultaneamente na mesma GPU. Conferir a instalação local antes de usar esse caminho em outro computador; a cópia pública da skill não instala pesos ou dependências.
 
+Validado em 11/10/2026: ComfyUI 0.39.0, PyTorch 2.14.1+cu130 e loader GGUF leejet; imagem real de ambiente/objetos em 512 × 512 com 20 passos em 132,3 s, e padrão 768 × 768 com 30 passos em 198,3 s, sem erro de memória. PNGs inspecionados e retomada real sem duplicação. Tempos incluem etapas de carregamento/encoding/decodificação, variam com a cena e não validam consistência facial. Os hashes completos de UC Q6_K, encoder e VAE coincidiram com os publicados.
+
 ## Roteiro e lote
 
 Ler os capítulos inteiros, escolher momentos distintos e registrar a ligação com o texto. A quantidade local é variável e pode superar a antiga faixa de duas ou três cenas. Não criar cenas repetidas para preencher a contagem. Manter aprovação do piloto e do conjunto, salvo dispensa específica do autor. A preparação técnica não autoriza montar imagens inéditas em um livro aprovado.
@@ -21,6 +23,8 @@ O JSON tem `livro`, `estilo` e `cenas`. Cada cena tem `capitulo`, `cena` (inteir
 Executar `python scripts/gerar_imagens_comfyui.py roteiro.json --saida <pasta-de-imagens> --validar` para conferir disponibilidade dos nós e salvar workflows API sem gerar. Esse check não testa carga dos modelos. Remover `--validar` para gerar um piloto real. Medir tempo, conferir memória e inspecionar PNG antes do lote. Se houver falha, corrigir a causa e preservar cenas concluídas; não trocar modelo ou baixar outra quantização silenciosamente.
 
 O script gera uma cena por vez, salva PNGs numerados, workflows API e `manifesto-imagens.json`, com prompt, seed, trecho, duração, hashes, prompt ID e licença. Repetir o comando preserva cenas concluídas com hashes válidos. Alteração do workflow exige nova pasta de saída para preservar versões. Em timeout, o trabalho pode continuar no servidor: conferir a fila antes de reenviar. Não confundir workflow API com workflow de interface visual.
+
+Ao concluir um lote com fila vazia, o script solicita descarregar os modelos para liberar memória para a narração e outras tarefas. O servidor permanece aberto. Não descarregar modelos no meio de um lote ou enquanto outra execução está na fila.
 
 Imagens geradas aguardam inspeção e aprovação. Conferir fidelidade ao trecho, anatomia, rostos, mãos, objetos, continuidade e qualidade visual. Associar ao roteiro audiovisual e/ou EPUB/miolo conforme o destino confirmado, sem incluir ilustrações no impresso silenciosamente. Prompts e revisão pelo chat continuam usando o chat; a inferência local não chama a geração de imagens do ChatGPT.
 

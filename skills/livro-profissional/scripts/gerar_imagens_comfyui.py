@@ -14,7 +14,8 @@ def api(base, path, payload=None):
     request = urllib.request.Request(base + path, data=data, headers={'Content-Type': 'application/json'})
     try:
         with urllib.request.urlopen(request, timeout=120) as response:
-            return json.load(response)
+            body = response.read()
+            return json.loads(body) if body else None
     except urllib.error.HTTPError as error:
         raise RuntimeError(error.read().decode(errors='replace')) from error
 
@@ -119,6 +120,11 @@ def main():
         manifest[key] = {'arquivo': destination.name, 'estado': 'gerado; aguardando inspeção e aprovação', 'cena': scene, 'workflow_sha256': fingerprint, 'imagem_sha256': hashlib.sha256(pixels).hexdigest(), 'prompt_id': prompt_id, 'segundos': round(time.monotonic() - start, 1), 'modelo': 'abenzerps/Qwen-Image-2.1-Uncensored-GGUF Q6_K', 'licenca': 'Qwen Research; autorização comercial separada necessária'}
         save_manifest(manifest_path, manifest)
         print('Gerado', destination, manifest[key]['segundos'], 's', flush=True)
+    if not args.validar:
+        queue = api(args.url, '/queue')
+        if not queue['queue_running'] and not queue['queue_pending']:
+            api(args.url, '/free', {'unload_models': True, 'free_memory': True})
+            print('Lote concluído; liberação dos modelos solicitada ao ComfyUI.', flush=True)
 
 
 if __name__ == '__main__':
