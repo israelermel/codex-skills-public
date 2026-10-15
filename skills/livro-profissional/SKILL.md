@@ -47,6 +47,12 @@ Se o texto mudar depois de aprovado, preserve a edição anterior e avalie os de
 
 ## Execução por etapa
 
+### Preferência híbrida: processamento local e voz ElevenLabs
+
+Escolha de Israel em 15/10/2026: priorizar modelos e ferramentas locais nas tarefas compatíveis para reduzir uso do modelo do chat. Usar **Qwen3.5-9B Q4_K_M no LM Studio** para revisão e propostas de complementação, **ComfyUI já instalado** para imagens e **ElevenLabs** para narração, com o perfil aprovado vigente. A preferência por execução local não muda a escolha expressa do ElevenLabs para voz. O chat coordena, verifica cobertura/qualidade, trata dúvidas e apresenta as aprovações previstas nesta skill. Não enviar o manuscrito inteiro ao chat por padrão quando o processamento local e relatórios menores bastarem; a coordenação e inspeção pelo chat ainda consomem uso e não há garantia de economia percentual.
+
+Ler [o fluxo híbrido](references/editor-local.md) para iniciar o servidor, revisar capítulos, preparar acréscimos e transferir entre etapas. O helper [editor_local.py](scripts/editor_local.py) usa somente a API local, preserva a fonte, salva progresso e libera o modelo após o lote. Não iniciar produção ou narração paga de um livro não indicado apenas por configurar o ambiente.
+
 ### 1. Imagens e originais → Markdown → revisão
 
 Leia [transcrição e revisão editorial](references/editorial.md). Separe `transcricao.md` fiel aos originais de `livro.md` revisado. Confira a cobertura de todas as páginas, marque ilegíveis e lacunas e preserve a rastreabilidade. Faça revisão ortográfica, gramatical, de concordância verbal/nominal, pontuação, clareza e consistência, sem descaracterizar o autor.
