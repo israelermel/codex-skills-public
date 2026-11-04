@@ -24,7 +24,7 @@ Para testar a capacidade de letras do modelo, pode-se gerar a frente completa, f
 
 ## Roteiro e lote
 
-Ler os capítulos inteiros, escolher momentos distintos e registrar a ligação com o texto. A quantidade local é variável e pode superar a antiga faixa de duas ou três cenas. Não criar cenas repetidas para preencher a contagem. Manter aprovação do piloto e do conjunto, salvo dispensa específica do autor. A preparação técnica não autoriza montar imagens inéditas em um livro aprovado.
+Ler os capítulos inteiros, escolher momentos distintos e registrar a ligação com o texto. Nos próximos vídeos, aplicar o mínimo de 50 imagens narrativas distintas por vídeo definido no [fluxo principal](../SKILL.md#2-capa-e-imagens-dos-capítulos), distribuídas ao longo da história; não há teto fixo por capítulo. Capa, miniatura, cartelas, repetições e recortes da mesma arte não contam para o mínimo. Não criar cenas repetidas para preencher a contagem. Manter aprovação do piloto e do conjunto, salvo dispensa específica do autor. A preparação técnica não autoriza montar imagens inéditas em um livro aprovado.
 
 O JSON tem `livro`, `estilo` e `cenas`. Cada cena tem `capitulo`, `cena` (inteiros positivos), `trecho`, `prompt`, `seed`, `resolucao`, `passos` e opcionais `cfg`, `negativo`. Descrever explicitamente a identidade dos personagens, roupas, ambiente e época. Sem referências, a imagem é quadrada; com referências, a proporção vem da primeira imagem e `resolucao` controla sua área aproximada. Identidade facial precisa de inspeção, não é garantida por seed.
 
